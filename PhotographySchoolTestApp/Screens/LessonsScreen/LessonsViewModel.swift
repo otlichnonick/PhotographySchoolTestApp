@@ -12,7 +12,8 @@ final class LessonsViewModel: BasePresenter, ObservableObject {
     @Published var lessons: [Lesson] = .init()
     @Published var selectedLesson: Lesson?
     @Published var errorMessage: String = ""
-    
+    @Published var navLinkIsActive: Bool = false
+
     private let lessonsManager: LessonsManager = .init()
 }
 
@@ -20,7 +21,7 @@ extension LessonsViewModel {
     func showAlert() {
         debugPrint("ERROR", errorMessage)
     }
-    
+
     func getLessons() {
         let publisher = lessonsManager.fetchLessons()
         baseRequest(publisher: publisher) { [weak self] result in

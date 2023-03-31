@@ -10,7 +10,7 @@ import Combine
 
 class BasePresenter {
     private var bag: Set<AnyCancellable> = .init()
-    
+
     func baseRequest<T: Codable>(publisher: AnyPublisher<T, Error>, handler: @escaping (Result<T, Error>) -> Void) {
         publisher
             .subscribe(on: DispatchQueue.global())

@@ -10,7 +10,7 @@ import Combine
 
 struct LessonsManager: APIManagerProtocol {
     var baseURL: String = Constants.baseUrl
-    
+
     func fetchLessons() -> AnyPublisher<LessonsModel, Error> {
         return fetch(endpoint: API.fetchLessons)
     }
@@ -29,14 +29,12 @@ extension LessonsManager.API: APICall {
             return ""
         }
     }
-    
+
     var method: HTTPMethod {
         return .GET
     }
-    
+
     var headers: HTTPHeaders? {
         return nil
     }
-    
-    
 }

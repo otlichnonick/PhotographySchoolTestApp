@@ -9,22 +9,54 @@ import SwiftUI
 
 struct LessonsScreen: View {
     @StateObject var viewModel: LessonsViewModel = .init()
-    
+
+    init() {
+        let coloredNavAppearance = UINavigationBarAppearance()
+        coloredNavAppearance.configureWithOpaqueBackground()
+        coloredNavAppearance.backgroundColor = Asset.customBlack.color
+        coloredNavAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        coloredNavAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+
+        UINavigationBar.appearance().standardAppearance = coloredNavAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = coloredNavAppearance
+        UITableView.appearance().backgroundColor = Asset.customBlack.color
+    }
+
     var body: some View {
         NavigationView {
-            VStack {
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundColor(.accentColor)
-                Text("Hello, world!")
-            }
-            .padding()
-            .background(Color.gray
-                .ignoresSafeArea())
-            .onAppear {
-                viewModel.getLessons()
+            if #available(iOS 16.0, *) {
+                lessonList
+                    .scrollContentBackground(.hidden)
+            } else {
+                lessonList
             }
         }
+    }
+
+    var lessonList: some View {
+        List {
+            ForEach(viewModel.lessons) { lesson in
+                Button {
+                    viewModel.navLinkIsActive = true
+                    viewModel.selectedLesson = lesson
+                } label: {
+                    LessonCellView(lesson: lesson)
+                }
+                .listRowBackground(Color(uiColor: Asset.customBlack.color))
+            }
+        }
+        .listStyle(.grouped)
+        .background(Color(uiColor: Asset.customBlack.color)
+            .ignoresSafeArea())
+        .navigationTitle("Lessons")
+        .onAppear {
+            viewModel.getLessons()
+        }
+        .background(
+            NavigationLink(destination: EmptyView(), isActive: $viewModel.navLinkIsActive, label: {
+                EmptyView()
+            })
+        )
     }
 }
 

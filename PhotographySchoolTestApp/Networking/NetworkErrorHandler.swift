@@ -11,7 +11,7 @@ enum NetworkErrorHandler: Error, LocalizedError {
     case notValidURL
     case notValidBody
     case noContent
-    
+
     public var errorDescription: String {
         switch self {
         case .notValidURL:
@@ -22,8 +22,10 @@ enum NetworkErrorHandler: Error, LocalizedError {
             return "There are no content"
         }
     }
-    
-    static func checkDecodingErrors<Output: Codable>(decoder: JSONDecoder, model: Output.Type, with data: Data) throws -> Output {
+
+    static func checkDecodingErrors<Output: Codable>(decoder: JSONDecoder,
+                                                     model: Output.Type,
+                                                     with data: Data) throws -> Output {
         do {
             return try decoder.decode(model.self, from: data)
         } catch DecodingError.keyNotFound(let key, let context) {

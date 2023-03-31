@@ -18,7 +18,7 @@ extension APICall {
         guard let url = URL(string: baseUrl + path) else {
             throw NetworkErrorHandler.notValidURL
         }
-        
+
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         request.allHTTPHeaderFields = headers

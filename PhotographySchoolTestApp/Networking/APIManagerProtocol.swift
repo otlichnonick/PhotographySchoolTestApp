@@ -13,19 +13,22 @@ protocol APIManagerProtocol {
 }
 
 extension APIManagerProtocol {
-    func fetch<Output: Codable>(endpoint: APICall, decoder: JSONDecoder = JSONDecoder()) -> AnyPublisher<Output, Error> {
+    func fetch<Output: Codable>(endpoint: APICall,
+                                decoder: JSONDecoder = JSONDecoder()) -> AnyPublisher<Output, Error> {
         do {
             let request = try endpoint.urlRequest(baseUrl: baseURL)
             return URLSession.shared.dataTaskPublisher(for: request)
                 .tryMap { result in
                     let httpResponse = result.response as? HTTPURLResponse
                     NetworkLogger.log(response: httpResponse, data: result.data)
-                    
+
                     if httpResponse?.statusCode == 204 {
                         throw NetworkErrorHandler.noContent
                     }
-                    
-                    return try NetworkErrorHandler.checkDecodingErrors(decoder: decoder, model: Output.self, with: result.data)
+
+                    return try NetworkErrorHandler.checkDecodingErrors(decoder: decoder,
+                                                                       model: Output.self,
+                                                                       with: result.data)
                 }
                 .eraseToAnyPublisher()
         } catch {

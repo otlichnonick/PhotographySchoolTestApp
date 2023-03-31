@@ -24,7 +24,7 @@ class NetworkLogger {
        HOST: \(host)\n
        HEADERS:\n
        """
-        for (key,value) in request.allHTTPHeaderFields ?? [:] {
+        for (key, value) in request.allHTTPHeaderFields ?? [:] {
             output += "\(key): \(value) \n"
         }
         output += "BODY DATA:\n"
@@ -34,7 +34,7 @@ class NetworkLogger {
         Logger.networkCall.info("\(output)")
 
     }
-    
+
     static func log(response: HTTPURLResponse?, data: Data?) {
         print("\n - - - - - - - - - - INCOMMING - - - - - - - - - - \n")
         defer { print("\n - - - - - - - - - -  END - - - - - - - - - - \n") }
@@ -57,7 +57,7 @@ class NetworkLogger {
         for (key, value) in response?.allHeaderFields ?? [:] {
             output += "\(key): \(value)\n"
         }
-        
+
         output += "BODY DATA:\n"
         if let body = data {
             output += "\n\(body.prettyPrintedJSONString ?? "") \n"
@@ -71,4 +71,3 @@ extension Logger {
 
     static let networkCall = Logger(subsystem: subsystem, category: "networkCall")
 }
-

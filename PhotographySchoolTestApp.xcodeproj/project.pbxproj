@@ -25,6 +25,10 @@
 		3A65C4FC29D57247003022DD /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A65C4FB29D57247003022DD /* BasePresenter.swift */; };
 		3A65C4FF29D57592003022DD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A65C4FE29D57592003022DD /* Constants.swift */; };
 		3A65C50329D58078003022DD /* LessonsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A65C50229D58078003022DD /* LessonsScreen.swift */; };
+		3A65C50529D58FBB003022DD /* LessonCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A65C50429D58FBB003022DD /* LessonCellView.swift */; };
+		3A65C50B29D5BC93003022DD /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3A65C50A29D5BC93003022DD /* swiftgen.yml */; };
+		3A65C50F29D5C245003022DD /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A65C50E29D5C245003022DD /* Colors.xcassets */; };
+		3A65C51129D5C2ED003022DD /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A65C51029D5C2ED003022DD /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +70,10 @@
 		3A65C4FB29D57247003022DD /* BasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
 		3A65C4FE29D57592003022DD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3A65C50229D58078003022DD /* LessonsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsScreen.swift; sourceTree = "<group>"; };
+		3A65C50429D58FBB003022DD /* LessonCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonCellView.swift; sourceTree = "<group>"; };
+		3A65C50A29D5BC93003022DD /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
+		3A65C50E29D5C245003022DD /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		3A65C51029D5C2ED003022DD /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +104,7 @@
 		3A65C4AD29D55D5C003022DD = {
 			isa = PBXGroup;
 			children = (
+				3A65C50A29D5BC93003022DD /* swiftgen.yml */,
 				3A65C4B829D55D5D003022DD /* PhotographySchoolTestApp */,
 				3A65C4C929D55D5F003022DD /* PhotographySchoolTestAppTests */,
 				3A65C4D329D55D5F003022DD /* PhotographySchoolTestAppUITests */,
@@ -116,6 +125,7 @@
 		3A65C4B829D55D5D003022DD /* PhotographySchoolTestApp */ = {
 			isa = PBXGroup;
 			children = (
+				3A65C50C29D5BEAD003022DD /* Generated */,
 				3A65C4FD29D5757D003022DD /* Helpers */,
 				3A65C4F629D57169003022DD /* Screens */,
 				3A65C4F529D57159003022DD /* Models */,
@@ -123,6 +133,7 @@
 				3A65C4B929D55D5D003022DD /* PhotographySchoolTestAppApp.swift */,
 				3A65C4BB29D55D5D003022DD /* ContentView.swift */,
 				3A65C4BD29D55D5E003022DD /* Assets.xcassets */,
+				3A65C50E29D5C245003022DD /* Colors.xcassets */,
 				3A65C4BF29D55D5E003022DD /* Preview Content */,
 			);
 			path = PhotographySchoolTestApp;
@@ -203,6 +214,7 @@
 		3A65C4F829D571F9003022DD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3A65C50429D58FBB003022DD /* LessonCellView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -216,6 +228,14 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		3A65C50C29D5BEAD003022DD /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				3A65C51029D5C2ED003022DD /* Colors.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -226,6 +246,8 @@
 				3A65C4B229D55D5D003022DD /* Sources */,
 				3A65C4B329D55D5D003022DD /* Frameworks */,
 				3A65C4B429D55D5D003022DD /* Resources */,
+				3A65C50629D59E24003022DD /* Run Script SwiftLint */,
+				3A65C50729D5A159003022DD /* Run Script SwiftGen */,
 			);
 			buildRules = (
 			);
@@ -321,7 +343,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A65C4C129D55D5E003022DD /* Preview Assets.xcassets in Resources */,
+				3A65C50F29D5C245003022DD /* Colors.xcassets in Resources */,
 				3A65C4BE29D55D5E003022DD /* Assets.xcassets in Resources */,
+				3A65C50B29D5BC93003022DD /* swiftgen.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,11 +365,52 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3A65C50629D59E24003022DD /* Run Script SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script SwiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		3A65C50729D5A159003022DD /* Run Script SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script SwiftGen";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftgen >/dev/null; then\n  swiftgen\nelse\n  echo \"warning: SwiftGen not installed, download it from https://github.com/SwiftGen/SwiftGen\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3A65C4B229D55D5D003022DD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A65C50529D58FBB003022DD /* LessonCellView.swift in Sources */,
+				3A65C51129D5C2ED003022DD /* Colors.swift in Sources */,
 				3A65C50329D58078003022DD /* LessonsScreen.swift in Sources */,
 				3A65C4EE29D568C1003022DD /* NetworkLogger.swift in Sources */,
 				3A65C4F329D56A45003022DD /* APIManagerProtocol.swift in Sources */,
@@ -523,8 +588,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -532,6 +597,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = agafonov.PhotographySchoolTestApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -552,8 +620,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -561,6 +629,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = agafonov.PhotographySchoolTestApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
