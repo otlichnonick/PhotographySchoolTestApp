@@ -29,6 +29,8 @@
 		3A65C50B29D5BC93003022DD /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 3A65C50A29D5BC93003022DD /* swiftgen.yml */; };
 		3A65C50F29D5C245003022DD /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A65C50E29D5C245003022DD /* Colors.xcassets */; };
 		3A65C51129D5C2ED003022DD /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A65C51029D5C2ED003022DD /* Colors.swift */; };
+		3A771FB629D6AB5500E96907 /* DetailLessonScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A771FB529D6AB5500E96907 /* DetailLessonScreen.swift */; };
+		3A771FB929D6B2D600E96907 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A771FB829D6B2D600E96907 /* PlayerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,8 @@
 		3A65C50A29D5BC93003022DD /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		3A65C50E29D5C245003022DD /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		3A65C51029D5C2ED003022DD /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		3A771FB529D6AB5500E96907 /* DetailLessonScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLessonScreen.swift; sourceTree = "<group>"; };
+		3A771FB829D6B2D600E96907 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +200,7 @@
 		3A65C4F629D57169003022DD /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				3A771FB429D6AB3800E96907 /* DetailLessonScreen */,
 				3A65C4F729D5717A003022DD /* LessonsScreen */,
 			);
 			path = Screens;
@@ -234,6 +239,23 @@
 				3A65C51029D5C2ED003022DD /* Colors.swift */,
 			);
 			path = Generated;
+			sourceTree = "<group>";
+		};
+		3A771FB429D6AB3800E96907 /* DetailLessonScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3A771FB729D6B2B200E96907 /* Views */,
+				3A771FB529D6AB5500E96907 /* DetailLessonScreen.swift */,
+			);
+			path = DetailLessonScreen;
+			sourceTree = "<group>";
+		};
+		3A771FB729D6B2B200E96907 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3A771FB829D6B2D600E96907 /* PlayerViewController.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -419,11 +441,13 @@
 				3A65C4EC29D5631D003022DD /* NetworkErrorHandler.swift in Sources */,
 				3A65C4BC29D55D5D003022DD /* ContentView.swift in Sources */,
 				3A65C4E629D55E34003022DD /* LessonModel.swift in Sources */,
+				3A771FB629D6AB5500E96907 /* DetailLessonScreen.swift in Sources */,
 				3A65C4E829D5620A003022DD /* APICall.swift in Sources */,
 				3A65C4E429D55DE1003022DD /* LessonsViewModel.swift in Sources */,
 				3A65C4BA29D55D5D003022DD /* PhotographySchoolTestAppApp.swift in Sources */,
 				3A65C4FC29D57247003022DD /* BasePresenter.swift in Sources */,
 				3A65C4FF29D57592003022DD /* Constants.swift in Sources */,
+				3A771FB929D6B2D600E96907 /* PlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

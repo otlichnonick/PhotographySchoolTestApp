@@ -53,7 +53,17 @@ struct LessonsScreen: View {
             viewModel.getLessons()
         }
         .background(
-            NavigationLink(destination: EmptyView(), isActive: $viewModel.navLinkIsActive, label: {
+            NavigationLink(destination: DetailLessonScreen(lesson: viewModel.selectedLesson ?? Lesson(),
+                                                           onNextTapped: {
+                                                               print("NEXT TAPPED")
+                                                           },
+                                                           onDownloadTapped: {
+                                                               print("DOWNLOAD TAPPED")
+                                                           })
+                .ignoresSafeArea()
+                .navigationBarTitleDisplayMode(.inline),
+                           isActive: $viewModel.navLinkIsActive,
+                           label: {
                 EmptyView()
             })
         )

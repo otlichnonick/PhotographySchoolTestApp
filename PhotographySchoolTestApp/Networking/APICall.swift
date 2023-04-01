@@ -23,7 +23,7 @@ extension APICall {
         request.httpMethod = method.rawValue
         request.allHTTPHeaderFields = headers
         request.httpBody = nil
-        NetworkLogger.log(request: request)
+//        NetworkLogger.log(request: request)
         return request
     }
 }

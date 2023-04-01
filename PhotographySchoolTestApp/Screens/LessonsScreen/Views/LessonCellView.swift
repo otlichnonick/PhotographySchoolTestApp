@@ -32,10 +32,10 @@ struct LessonCellView: View {
 
             Spacer()
 
-            Image(systemName: "chevron.right")
+            Image(systemName: Constants.chevronRight)
                 .scaledToFit()
                 .frame(width: 40)
-                .foregroundColor(.blue)
+                .foregroundColor(Color(uiColor: .tintColor))
         }
     }
 }

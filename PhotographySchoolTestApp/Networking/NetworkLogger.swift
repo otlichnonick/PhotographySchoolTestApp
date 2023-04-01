@@ -10,6 +10,7 @@ import OSLog
 
 class NetworkLogger {
     static func log(request: URLRequest) {
+        // swiftlint:disable all
         print("\n - - - - - - - - - - OUTGOING - - - - - - - - - - \n")
         defer { print("\n - - - - - - - - - -  END - - - - - - - - - - \n") }
         let urlAsString = request.url?.absoluteString ?? ""

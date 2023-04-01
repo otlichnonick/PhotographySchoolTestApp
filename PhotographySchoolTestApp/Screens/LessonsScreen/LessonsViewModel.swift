@@ -29,7 +29,6 @@ extension LessonsViewModel {
             switch result {
             case .success(let data):
                 self.lessons = data.lessons
-                debugPrint("LESSONS", self.lessons)
             case .failure(let error):
                 self.errorMessage = error.localizedDescription
                 self.showAlert()

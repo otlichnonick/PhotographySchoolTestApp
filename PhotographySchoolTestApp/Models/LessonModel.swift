@@ -22,3 +22,13 @@ struct Lesson: Codable, Identifiable {
         case videoURL = "video_url"
     }
 }
+
+extension Lesson {
+    init() {
+        self.id = 0
+        self.name = "name"
+        self.description = "description"
+        self.thumbnail = ""
+        self.videoURL = ""
+    }
+}

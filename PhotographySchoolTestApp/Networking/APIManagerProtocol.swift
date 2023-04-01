@@ -20,7 +20,7 @@ extension APIManagerProtocol {
             return URLSession.shared.dataTaskPublisher(for: request)
                 .tryMap { result in
                     let httpResponse = result.response as? HTTPURLResponse
-                    NetworkLogger.log(response: httpResponse, data: result.data)
+//                    NetworkLogger.log(response: httpResponse, data: result.data)
 
                     if httpResponse?.statusCode == 204 {
                         throw NetworkErrorHandler.noContent
