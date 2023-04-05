@@ -2,27 +2,63 @@
 //  DetailLessonScreen.swift
 //  PhotographySchoolTestApp
 //
-//  Created by Anton Agafonov on 31.03.2023.
+//  Created by Anton Agafonov on 03.04.2023.
 //
 
-import AVKit
 import SwiftUI
 
-struct DetailLessonScreen: UIViewControllerRepresentable {
-    let lesson: Lesson
-    let onNextTapped: () -> Void
-    let onDownloadTapped: () -> Void
+struct DetailLessonScreen: View {
+    let lessons: [Lesson]
+    @Binding var selectedLesson: Lesson
+    @StateObject private var viewModel: DetailLessonViewModel = .init()
+    var body: some View {
+        ZStack {
+            DetailLessonView(lesson: $selectedLesson,
+                             isEnable: $viewModel.downloadButtonIsEnable,
+                             onNextTapped: {
+                viewModel.showNextLesson(&selectedLesson, from: lessons)
+            },
+                             onDownloadTapped: {
+                viewModel.showProgressVeiw = true
+                viewModel.downloadButtonIsEnable = false
+            })
+            
+            if viewModel.showProgressVeiw {
+                VStack {
+                    Text("Do you want to download the video?")
+                    
+                    ProgressView(viewModel.progressText, value: viewModel.progress)
+                    
+                    HStack {
+                        Button {
+                            viewModel.downloadVideo(from: selectedLesson.videoURL)
+                        } label: {
+                            Text("Start")
+                        }
+                        .disabled(viewModel.isDownloading)
+                        
+                        Spacer()
 
-    func makeUIViewController(context: Context) -> some UIViewController {
-        debugPrint("lesson", lesson)
-        let viewController = PlayerViewController(lesson: lesson,
-                                                  onDownloadTapped: onDownloadTapped,
-                                                  onNextTapped: onNextTapped)
-
-        return viewController
-    }
-
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-
+                        Button {
+                            viewModel.cancelDownload()
+                        } label: {
+                            Text("Cancel")
+                        }
+                    }
+                    .padding()
+                }
+                .padding()
+                .background(
+                RoundedRectangle(cornerRadius: 16)
+                    .foregroundColor(.gray))
+                .padding()
+            }
+        }
+        .onAppear {
+            viewModel.prepareVideoUrlFor(selectedLesson: &selectedLesson)
+        }
+        .alert(viewModel.alertTitle, isPresented: $viewModel.showAlert, actions: {}, message: {
+            Text(viewModel.alertMessage)
+        })
     }
 }

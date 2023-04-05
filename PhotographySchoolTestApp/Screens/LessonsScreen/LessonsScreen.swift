@@ -37,8 +37,7 @@ struct LessonsScreen: View {
         List {
             ForEach(viewModel.lessons) { lesson in
                 Button {
-                    viewModel.navLinkIsActive = true
-                    viewModel.selectedLesson = lesson
+                    viewModel.showSelectedLesson(lesson)
                 } label: {
                     LessonCellView(lesson: lesson)
                 }
@@ -52,14 +51,12 @@ struct LessonsScreen: View {
         .onAppear {
             viewModel.getLessons()
         }
+        .alert("Error", isPresented: $viewModel.showAlert) {
+            } message: {
+              Text(viewModel.alertMessage)
+        }
         .background(
-            NavigationLink(destination: DetailLessonScreen(lesson: viewModel.selectedLesson ?? Lesson(),
-                                                           onNextTapped: {
-                                                               print("NEXT TAPPED")
-                                                           },
-                                                           onDownloadTapped: {
-                                                               print("DOWNLOAD TAPPED")
-                                                           })
+            NavigationLink(destination: DetailLessonScreen(lessons: viewModel.lessons, selectedLesson: $viewModel.selectedLesson.toUnwrapped(defaultValue: Lesson()))
                 .ignoresSafeArea()
                 .navigationBarTitleDisplayMode(.inline),
                            isActive: $viewModel.navLinkIsActive,

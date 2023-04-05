@@ -11,11 +11,11 @@ struct LessonsModel: Codable {
     let lessons: [Lesson]
 }
 
-struct Lesson: Codable, Identifiable {
+struct Lesson: Codable, Identifiable, Equatable {
     let id: Int
     let name, description: String
     let thumbnail: String
-    let videoURL: String
+    var videoURL: String
 
     enum CodingKeys: String, CodingKey {
         case id, name, description, thumbnail

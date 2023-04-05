@@ -8,10 +8,11 @@
 import UIKit
 import AVKit
 
-class PlayerViewController: UIViewController {
-    let lesson: Lesson
-    let onDownloadTapped: () -> Void
-    let onNextTapped: () -> Void
+final class PlayerViewController: UIViewController {
+    private var lesson: Lesson
+    private let onDownloadTapped: () -> Void
+    private let onNextTapped: () -> Void
+    private var player: AVPlayer?
     
     private lazy var playerContainerView: UIView = {
         let view = UIView()
@@ -33,7 +34,6 @@ class PlayerViewController: UIViewController {
         label.textColor = .white
         label.numberOfLines = .zero
         label.font = .systemFont(ofSize: 24)
-        label.text = lesson.name
         return label
     }()
     private lazy var descriptionLabel: UILabel = {
@@ -41,7 +41,6 @@ class PlayerViewController: UIViewController {
         label.textColor = .white
         label.numberOfLines = .zero
         label.font = .systemFont(ofSize: 14)
-        label.text = lesson.description
         return label
     }()
     private lazy var nextLessonButton: UIButton = {
@@ -51,6 +50,13 @@ class PlayerViewController: UIViewController {
         button.setImage(UIImage(systemName: Constants.chevronRight), for: .normal)
         button.addTarget(self, action: #selector(onNextButtonTapped), for: .touchUpInside)
         button.semanticContentAttribute = .forceRightToLeft
+        return button
+    }()
+    private lazy var downloadButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Download", for: .normal)
+        button.setImage(UIImage(systemName: Constants.downloadIcon), for: .normal)
+        button.addTarget(self, action: #selector(onDownloadButtonTapped), for: .touchUpInside)
         return button
     }()
 
@@ -70,15 +76,17 @@ class PlayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Asset.customBlack.color
-        setupPlayerContainerView()
-        setupScrollView()
-        setupLabels()
-        setupNextLessonButton()
+        setupUI()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNavigationBar()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        player?.pause()
     }
 
     @objc
@@ -90,15 +98,29 @@ class PlayerViewController: UIViewController {
     private func onDownloadButtonTapped() {
         onDownloadTapped()
     }
+    
+    func updateView(with newLesson: Lesson) {
+        if lesson != newLesson {
+            lesson = newLesson
+            setupUI()
+        }
+    }
+    
+    func buttonIsEnable(_ isEnable: Bool) {
+        downloadButton.isEnabled = isEnable
+    }
 }
 
 extension PlayerViewController {
+    private func setupUI() {
+        setupPlayerContainerView()
+        setupScrollView()
+        setupLabels()
+        setupNextLessonButton()
+    }
+    
     private func setupNavigationBar() {
-        let button = UIButton(type: .system)
-        button.setTitle("Download", for: .normal)
-        button.setImage(UIImage(systemName: Constants.downloadIcon), for: .normal)
-        button.addTarget(self, action: #selector(onDownloadButtonTapped), for: .touchUpInside)
-        parent?.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
+        parent?.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: downloadButton)
     }
 
     private func setupPlayerContainerView() {
@@ -112,9 +134,14 @@ extension PlayerViewController {
     }
 
     private func configureVideoPlayer() {
-        guard let url = URL(string: lesson.videoURL) else { return }
-
-        let player = AVPlayer(url: url)
+        var url: URL?
+        if checkVideoDownloaded(from: lesson.videoURL) {
+            url = getLocalVideoUrl(from: lesson.videoURL)
+        } else {
+            url = URL(string: lesson.videoURL)
+        }
+        guard let url else { return }
+        player = AVPlayer(url: url)
         let avpVC = AVPlayerViewController()
         avpVC.player = player
         avpVC.videoGravity = AVLayerVideoGravity.resizeAspect
@@ -142,12 +169,14 @@ extension PlayerViewController {
 
     private func setupLabels() {
         contentView.addSubview(titleLabel)
+        titleLabel.text = lesson.name
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.defaultPadding).isActive = true
         titleLabel.topAnchor.constraint(equalTo: playerContainerView.bottomAnchor, constant: Constants.defaultPadding).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.defaultPadding).isActive = true
 
         contentView.addSubview(descriptionLabel)
+        descriptionLabel.text = lesson.description
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.defaultPadding).isActive = true
         descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Constants.defaultPadding).isActive = true
@@ -160,5 +189,18 @@ extension PlayerViewController {
         nextLessonButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: Constants.defaultPadding).isActive = true
         nextLessonButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.defaultPadding).isActive = true
         nextLessonButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Constants.defaultPadding).isActive = true
+    }
+    
+    private func checkVideoDownloaded(from urlString: String) -> Bool {
+        guard let videoUrl = getLocalVideoUrl(from: urlString) else { return false }
+        return FileManager.default.fileExists(atPath: videoUrl.path)
+    }
+    
+    private func getLocalVideoUrl(from urlString: String) -> URL? {
+        guard let documentUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            debugPrint("there are no documentUrl")
+            return nil
+        }
+        return documentUrl.appendingPathComponent(String(urlString.suffix(14)))
     }
 }
