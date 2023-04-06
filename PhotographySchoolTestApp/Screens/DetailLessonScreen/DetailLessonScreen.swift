@@ -35,7 +35,7 @@ struct DetailLessonScreen: View {
                         } label: {
                             Text("Start")
                         }
-                        .disabled(viewModel.isDownloading)
+                        .disabled(viewModel.startButtonDisabled)
                         
                         Spacer()
 

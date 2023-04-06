@@ -39,17 +39,144 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3330C2D2-09AD-4277-8A20-4C8E9931048F"
+            uuid = "FDA8FB81-CAEA-4C57-A0B8-34E407F4A473"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotographySchoolTestApp/Screens/DetailLessonScreen/Views/PlayerViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "configureVideoPlayer()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FDA8FB81-CAEA-4C57-A0B8-34E407F4A473 - d4c110247a79f167"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhotographySchoolTestApp.PlayerViewController.configureVideoPlayer() -&gt; ()"
+                  moduleName = "PhotographySchoolTestApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/anton/Documents/%D0%A2%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F/Photography%20School/app/PhotographySchoolTestApp/PhotographySchoolTestApp/Screens/DetailLessonScreen/Views/PlayerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "137"
+                  endingLineNumber = "137"
+                  offsetFromSymbolStart = "208">
+               </Location>
+               <Location
+                  uuid = "FDA8FB81-CAEA-4C57-A0B8-34E407F4A473 - d4c110247a79f167"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhotographySchoolTestApp.PlayerViewController.configureVideoPlayer() -&gt; ()"
+                  moduleName = "PhotographySchoolTestApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/anton/Documents/%D0%A2%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F/Photography%20School/app/PhotographySchoolTestApp/PhotographySchoolTestApp/Screens/DetailLessonScreen/Views/PlayerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "137"
+                  endingLineNumber = "137"
+                  offsetFromSymbolStart = "264">
+               </Location>
+               <Location
+                  uuid = "FDA8FB81-CAEA-4C57-A0B8-34E407F4A473 - d4c110247a79f167"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhotographySchoolTestApp.PlayerViewController.configureVideoPlayer() -&gt; ()"
+                  moduleName = "PhotographySchoolTestApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/anton/Documents/%D0%A2%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F/Photography%20School/app/PhotographySchoolTestApp/PhotographySchoolTestApp/Screens/DetailLessonScreen/Views/PlayerViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "137"
+                  endingLineNumber = "137"
+                  offsetFromSymbolStart = "1388">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B4489177-E025-4046-9528-899EDF2EA8BE"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PhotographySchoolTestApp/Screens/DetailLessonScreen/Views/PlayerViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
-            landmarkName = "configureVideoPlayer()"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "prepareUrlForPlayer()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6A6D766D-5DA0-415D-AAB8-5674EC16AFAB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotographySchoolTestApp/Networking/LesonsManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "getLessons(completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A8D1F384-BC75-41CB-8567-B65CDC48EBDB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotographySchoolTestApp/Networking/LesonsManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "getLessons(completionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A8D1F384-BC75-41CB-8567-B65CDC48EBDB - 31bccdbe8fe1bf95"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhotographySchoolTestApp.LessonsManager.getLessons(completionHandler: (Swift.Result&lt;PhotographySchoolTestApp.LessonsModel, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PhotographySchoolTestApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/anton/Documents/%D0%A2%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F/Photography%20School/app/PhotographySchoolTestApp/PhotographySchoolTestApp/Networking/LesonsManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "288">
+               </Location>
+               <Location
+                  uuid = "A8D1F384-BC75-41CB-8567-B65CDC48EBDB - 31bccdbe8fe1bf95"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhotographySchoolTestApp.LessonsManager.getLessons(completionHandler: (Swift.Result&lt;PhotographySchoolTestApp.LessonsModel, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "PhotographySchoolTestApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/anton/Documents/%D0%A2%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D1%8B%D0%B5%20%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D1%8F/Photography%20School/app/PhotographySchoolTestApp/PhotographySchoolTestApp/Networking/LesonsManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "424">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

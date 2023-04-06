@@ -14,7 +14,7 @@ class DetailLessonViewModel: NSObject, ObservableObject {
     @Published var progress: Float = .zero
     @Published var progressText: String = .init()
     @Published var showProgressVeiw: Bool = false
-    @Published var isDownloading: Bool = false
+    @Published var startButtonDisabled: Bool = false
     @Published var downloadButtonIsEnable: Bool = true
     var activeDownload: Download?
     var urlSession: URLSession {
@@ -24,7 +24,7 @@ class DetailLessonViewModel: NSObject, ObservableObject {
     }
     
     func downloadVideo(from urlString: String) {
-        isDownloading = true
+        startButtonDisabled = true
         if !checkVideoDownloaded(from: urlString) {
             startDownload(with: urlString)
         } else {
@@ -72,19 +72,14 @@ class DetailLessonViewModel: NSObject, ObservableObject {
 }
 
 extension DetailLessonViewModel: URLSessionDownloadDelegate {
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
-        debugPrint("Task has been resumed")
-    }
-    
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         guard let sourceUrl = downloadTask.originalRequest?.url else { return }
-        guard let documentUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-        let videoUrl = documentUrl.appendingPathComponent(String(sourceUrl.lastPathComponent.suffix(14)))
+        guard let videoUrl = StorageService.shared.transformUrlToLocal(from: sourceUrl) else { return }
         do {
-            try FileManager.default.moveItem(at: location, to: videoUrl)
+            try StorageService.shared.moveAndSaveVideo(at: location, to: videoUrl)
             
             DispatchQueue.main.async {
-                self.isDownloading = false
+                self.startButtonDisabled = false
                 self.showProgressVeiw = false
             }
         } catch let error {
@@ -120,7 +115,7 @@ extension DetailLessonViewModel: DownloadDelegate {
     }
     
     func cancelDownload() {
-        isDownloading = false
+        startButtonDisabled = false
         showProgressVeiw = false
         downloadButtonIsEnable = true
         guard let download = activeDownload else { return }

@@ -132,15 +132,9 @@ extension PlayerViewController {
         playerContainerView.heightAnchor.constraint(equalTo: playerContainerView.widthAnchor, multiplier: 9/16).isActive = true
         configureVideoPlayer()
     }
-
+    
     private func configureVideoPlayer() {
-        var url: URL?
-        if checkVideoDownloaded(from: lesson.videoURL) {
-            url = getLocalVideoUrl(from: lesson.videoURL)
-        } else {
-            url = URL(string: lesson.videoURL)
-        }
-        guard let url else { return }
+        guard let url = prepareUrlForPlayer() else { return }
         player = AVPlayer(url: url)
         let avpVC = AVPlayerViewController()
         avpVC.player = player
@@ -149,6 +143,16 @@ extension PlayerViewController {
         avpVC.view.frame = playerContainerView.bounds
         playerContainerView.addSubview(avpVC.view)
         playerContainerView.layer.masksToBounds = true
+    }
+    
+    private func prepareUrlForPlayer() -> URL? {
+        var url: URL?
+        if StorageService.shared.checkStorageContains(url: lesson.videoURL) {
+            url = StorageService.shared.getLocalUrlFromString(lesson.videoURL)
+        } else {
+            url = URL(string: lesson.videoURL)
+        }
+        return url
     }
 
     private func setupScrollView() {
@@ -189,18 +193,5 @@ extension PlayerViewController {
         nextLessonButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: Constants.defaultPadding).isActive = true
         nextLessonButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.defaultPadding).isActive = true
         nextLessonButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Constants.defaultPadding).isActive = true
-    }
-    
-    private func checkVideoDownloaded(from urlString: String) -> Bool {
-        guard let videoUrl = getLocalVideoUrl(from: urlString) else { return false }
-        return FileManager.default.fileExists(atPath: videoUrl.path)
-    }
-    
-    private func getLocalVideoUrl(from urlString: String) -> URL? {
-        guard let documentUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-            debugPrint("there are no documentUrl")
-            return nil
-        }
-        return documentUrl.appendingPathComponent(String(urlString.suffix(14)))
     }
 }

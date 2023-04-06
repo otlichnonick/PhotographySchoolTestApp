@@ -8,19 +8,19 @@
 import Foundation
 
 struct LessonsManager {
-    
     func getLessons(completionHandler: @escaping (Result<LessonsModel, Error>) -> Void) {
-        guard let cacheURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first?.appendingPathComponent("lessons") else {
-            debugPrint("there no cache url")
-            return
-        }
+        guard let cacheUrl = StorageService.shared.getCacheUrl() else { return }
         
-        if let cacheData = try? Data(contentsOf: cacheURL),
+        if let cacheData = try? Data(contentsOf: cacheUrl),
            let lessonsModel = try? JSONDecoder().decode(LessonsModel.self, from: cacheData) {
             completionHandler(.success(lessonsModel))
             return
         }
         
+        downloadLessonsAndSave(to: cacheUrl, with: completionHandler)
+    }
+    
+    func downloadLessonsAndSave(to cacheUrl: URL, with completionHandler: @escaping (Result<LessonsModel, Error>) -> Void) {
         guard let url = URL(string: Constants.baseUrl) else {
             debugPrint("there are no url for download")
             return
@@ -37,7 +37,7 @@ struct LessonsManager {
                     return
                 }
                 
-                try? data.write(to: cacheURL)
+                try? data.write(to: cacheUrl)
                 completionHandler(.success(lessonsModel))
             }
         }.resume()
