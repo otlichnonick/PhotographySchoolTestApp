@@ -41,17 +41,18 @@ struct LessonsScreen: View {
                 } label: {
                     LessonCellView(lesson: lesson)
                 }
+                .accessibilityIdentifier(Identifiers.lessonRow)
                 .listRowBackground(Color(uiColor: Asset.customBlack.color))
             }
         }
         .listStyle(.grouped)
         .background(Color(uiColor: Asset.customBlack.color)
             .ignoresSafeArea())
-        .navigationTitle("Lessons")
+        .navigationTitle(Constants.navigationTitle)
         .onAppear {
             viewModel.getLessons()
         }
-        .alert("Error", isPresented: $viewModel.showAlert) {
+        .alert(Constants.alertTitle, isPresented: $viewModel.showAlert) {
             } message: {
               Text(viewModel.alertMessage)
         }
@@ -70,5 +71,12 @@ struct LessonsScreen: View {
 struct LessonsScreen_Previews: PreviewProvider {
     static var previews: some View {
         LessonsScreen()
+    }
+}
+
+private extension LessonsScreen {
+    struct Constants {
+        static let navigationTitle = "Lessons"
+        static let alertTitle = "Error"
     }
 }

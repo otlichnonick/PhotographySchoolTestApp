@@ -33,30 +33,32 @@ final class PlayerViewController: UIViewController {
         let label = UILabel()
         label.textColor = .white
         label.numberOfLines = .zero
-        label.font = .systemFont(ofSize: 24)
+        label.font = .systemFont(ofSize: Constants.largeFontSize)
         return label
     }()
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
         label.numberOfLines = .zero
-        label.font = .systemFont(ofSize: 14)
+        label.font = .systemFont(ofSize: Constants.regularFontSize)
         return label
     }()
     private lazy var nextLessonButton: UIButton = {
         let button = UIButton(type: .system)
-        button.titleLabel?.font = .systemFont(ofSize: 14)
-        button.setTitle("Next lesson ", for: .normal)
-        button.setImage(UIImage(systemName: Constants.chevronRight), for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: Constants.regularFontSize)
+        button.setTitle(Constants.nextLessonButtonTitle, for: .normal)
+        button.setImage(UIImage(systemName: AppConstants.chevronRight), for: .normal)
         button.addTarget(self, action: #selector(onNextButtonTapped), for: .touchUpInside)
         button.semanticContentAttribute = .forceRightToLeft
+        button.accessibilityIdentifier = Identifiers.nextButton
         return button
     }()
     private lazy var downloadButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Download", for: .normal)
-        button.setImage(UIImage(systemName: Constants.downloadIcon), for: .normal)
+        button.setTitle(Constants.trailingNavBarButtonTitle, for: .normal)
+        button.setImage(UIImage(systemName: AppConstants.downloadIcon), for: .normal)
         button.addTarget(self, action: #selector(onDownloadButtonTapped), for: .touchUpInside)
+        button.accessibilityIdentifier = Identifiers.downloadButton
         return button
     }()
 
@@ -121,6 +123,7 @@ extension PlayerViewController {
     
     private func setupNavigationBar() {
         parent?.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: downloadButton)
+        parent?.navigationItem.leftBarButtonItem?.accessibilityIdentifier = Identifiers.backButton
     }
 
     private func setupPlayerContainerView() {
@@ -129,7 +132,7 @@ extension PlayerViewController {
         playerContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         playerContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         playerContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        playerContainerView.heightAnchor.constraint(equalTo: playerContainerView.widthAnchor, multiplier: 9/16).isActive = true
+        playerContainerView.heightAnchor.constraint(equalTo: playerContainerView.widthAnchor, multiplier: Constants.videoFrameMultiplier).isActive = true
         configureVideoPlayer()
     }
     
@@ -159,7 +162,7 @@ extension PlayerViewController {
         view.addSubview(scrollView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        scrollView.topAnchor.constraint(equalTo: playerContainerView.bottomAnchor, constant: Constants.defaultPadding).isActive = true
+        scrollView.topAnchor.constraint(equalTo: playerContainerView.bottomAnchor, constant: AppConstants.defaultPadding).isActive = true
         scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         scrollView.addSubview(contentView)
@@ -175,23 +178,33 @@ extension PlayerViewController {
         contentView.addSubview(titleLabel)
         titleLabel.text = lesson.name
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.defaultPadding).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: playerContainerView.bottomAnchor, constant: Constants.defaultPadding).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.defaultPadding).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: AppConstants.defaultPadding).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: playerContainerView.bottomAnchor, constant: AppConstants.defaultPadding).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -AppConstants.defaultPadding).isActive = true
 
         contentView.addSubview(descriptionLabel)
         descriptionLabel.text = lesson.description
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.defaultPadding).isActive = true
-        descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Constants.defaultPadding).isActive = true
-        descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.defaultPadding).isActive = true
+        descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: AppConstants.defaultPadding).isActive = true
+        descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: AppConstants.defaultPadding).isActive = true
+        descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -AppConstants.defaultPadding).isActive = true
     }
     
     private func setupNextLessonButton() {
         contentView.addSubview(nextLessonButton)
         nextLessonButton.translatesAutoresizingMaskIntoConstraints = false
-        nextLessonButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: Constants.defaultPadding).isActive = true
-        nextLessonButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.defaultPadding).isActive = true
-        nextLessonButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Constants.defaultPadding).isActive = true
+        nextLessonButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: AppConstants.defaultPadding).isActive = true
+        nextLessonButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -AppConstants.defaultPadding).isActive = true
+        nextLessonButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -AppConstants.defaultPadding).isActive = true
+    }
+}
+
+private extension PlayerViewController {
+    struct Constants {
+        static let trailingNavBarButtonTitle = "Download"
+        static let nextLessonButtonTitle = "Next lesson "
+        static let largeFontSize: CGFloat = 24
+        static let regularFontSize: CGFloat = 14
+        static let videoFrameMultiplier: CGFloat = 9/16
     }
 }

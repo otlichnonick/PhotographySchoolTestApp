@@ -8,7 +8,7 @@
 import Foundation
 
 struct LessonsManager {
-    func getLessons(completionHandler: @escaping (Result<LessonsModel, Error>) -> Void) {
+    func getLessons(completionHandler: @escaping (Result<LessonsModel, ErrorHandler>) -> Void) {
         guard let cacheUrl = StorageService.shared.getCacheUrl() else { return }
         
         if let cacheData = try? Data(contentsOf: cacheUrl),
@@ -20,27 +20,28 @@ struct LessonsManager {
         downloadLessonsAndSave(to: cacheUrl, with: completionHandler)
     }
     
-    func downloadLessonsAndSave(to cacheUrl: URL, with completionHandler: @escaping (Result<LessonsModel, Error>) -> Void) {
-        guard let url = URL(string: Constants.baseUrl) else {
-            debugPrint("there are no url for download")
+    func downloadLessonsAndSave(to cacheUrl: URL, with completionHandler: @escaping (Result<LessonsModel, ErrorHandler>) -> Void) {
+        guard let url = URL(string: AppConstants.baseUrl) else {
+            completionHandler(.failure(.wrongUrl))
             return
         }
         
         URLSession.shared.dataTask(with: url) { (data, _, error) in
             if let error {
-                completionHandler(.failure(error))
+                completionHandler(.failure(.dataTaskError(error.localizedDescription)))
             }
             
             if let data {
                 guard let lessonsModel = try? JSONDecoder().decode(LessonsModel.self, from: data) else {
-                    debugPrint("wrong parsing")
+                    completionHandler(.failure(.parsingError))
                     return
                 }
                 
                 try? data.write(to: cacheUrl)
                 completionHandler(.success(lessonsModel))
+            } else {
+                completionHandler(.failure(.wrongData))
             }
         }.resume()
     }
 }
-

@@ -32,7 +32,7 @@ extension LessonsViewModel {
                 self.lessons = data.lessons
             case .failure(let error):
                 self.showAlert = true
-                self.alertMessage = error.localizedDescription
+                self.alertMessage = error.description
             }
         }
     }

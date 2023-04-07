@@ -46,8 +46,8 @@
             filePath = "PhotographySchoolTestApp/Screens/DetailLessonScreen/Views/PlayerViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "configureVideoPlayer()"
             landmarkType = "7">
             <Locations>
@@ -109,8 +109,8 @@
             filePath = "PhotographySchoolTestApp/Screens/DetailLessonScreen/Views/PlayerViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
             landmarkName = "prepareUrlForPlayer()"
             landmarkType = "7">
          </BreakpointContent>

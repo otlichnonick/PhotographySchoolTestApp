@@ -25,7 +25,7 @@ struct DetailLessonScreen: View {
             
             if viewModel.showProgressVeiw {
                 VStack {
-                    Text("Do you want to download the video?")
+                    Text(Constants.progressViewTitle)
                     
                     ProgressView(viewModel.progressText, value: viewModel.progress)
                     
@@ -33,23 +33,25 @@ struct DetailLessonScreen: View {
                         Button {
                             viewModel.downloadVideo(from: selectedLesson.videoURL)
                         } label: {
-                            Text("Start")
+                            Text(Constants.startButtonTitle)
                         }
                         .disabled(viewModel.startButtonDisabled)
+                        .accessibilityIdentifier(Identifiers.startButton)
                         
                         Spacer()
 
                         Button {
                             viewModel.cancelDownload()
                         } label: {
-                            Text("Cancel")
+                            Text(Constants.cancelButtonTitle)
                         }
+                        .accessibilityIdentifier(Identifiers.cancelButton)
                     }
                     .padding()
                 }
                 .padding()
                 .background(
-                RoundedRectangle(cornerRadius: 16)
+                    RoundedRectangle(cornerRadius: Constants.progressViewTitleCornerRadius)
                     .foregroundColor(.gray))
                 .padding()
             }
@@ -60,5 +62,14 @@ struct DetailLessonScreen: View {
         .alert(viewModel.alertTitle, isPresented: $viewModel.showAlert, actions: {}, message: {
             Text(viewModel.alertMessage)
         })
+    }
+}
+
+private extension DetailLessonScreen {
+    struct Constants {
+        static let progressViewTitle = "Do you want to download the video?"
+        static let startButtonTitle = "Start"
+        static let cancelButtonTitle = "Cancel"
+        static let progressViewTitleCornerRadius: CGFloat = 16
     }
 }
