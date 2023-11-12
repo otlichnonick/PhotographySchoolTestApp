@@ -150,8 +150,8 @@ extension PlayerViewController {
     
     private func prepareUrlForPlayer() -> URL? {
         var url: URL?
-        if StorageService.shared.checkStorageContains(url: lesson.videoURL) {
-            url = StorageService.shared.getLocalUrlFromString(lesson.videoURL)
+        if StorageService.shared.checkVideoWasDownloaded(from: lesson.videoURL) {
+            url = StorageService.shared.getLocalVideoUrl(from: lesson.videoURL)
         } else {
             url = URL(string: lesson.videoURL)
         }

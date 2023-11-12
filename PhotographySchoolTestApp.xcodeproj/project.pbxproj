@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A330D5F2B00FFD70097E753 /* DetailLessonViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A330D5E2B00FFD60097E753 /* DetailLessonViewModelTests.swift */; };
+		3A330D602B01007F0097E753 /* DetailLessonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A771FC829DAE85D00E96907 /* DetailLessonViewModel.swift */; };
+		3A330D612B0100CA0097E753 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A771FCC29DD765500E96907 /* StorageService.swift */; };
+		3A330D622B010B120097E753 /* DownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A771FC429DAE1F400E96907 /* DownloadService.swift */; };
+		3A330D632B010B330097E753 /* LessonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A65C4E529D55E34003022DD /* LessonModel.swift */; };
+		3A330D642B010B540097E753 /* Collection+Access.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A771FBA29D8CFC800E96907 /* Collection+Access.swift */; };
 		3A65C4BA29D55D5D003022DD /* PhotographySchoolTestAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A65C4B929D55D5D003022DD /* PhotographySchoolTestAppApp.swift */; };
 		3A65C4BC29D55D5D003022DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A65C4BB29D55D5D003022DD /* ContentView.swift */; };
 		3A65C4BE29D55D5E003022DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A65C4BD29D55D5E003022DD /* Assets.xcassets */; };
 		3A65C4C129D55D5E003022DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A65C4C029D55D5E003022DD /* Preview Assets.xcassets */; };
-		3A65C4CB29D55D5F003022DD /* PhotographySchoolTestAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A65C4CA29D55D5F003022DD /* PhotographySchoolTestAppTests.swift */; };
 		3A65C4D729D55D5F003022DD /* PhotographySchoolTestAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A65C4D629D55D5F003022DD /* PhotographySchoolTestAppUITestsLaunchTests.swift */; };
 		3A65C4E429D55DE1003022DD /* LessonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A65C4E329D55DE1003022DD /* LessonsViewModel.swift */; };
 		3A65C4E629D55E34003022DD /* LessonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A65C4E529D55E34003022DD /* LessonModel.swift */; };
@@ -28,7 +33,7 @@
 		3A771FBB29D8CFC800E96907 /* Collection+Access.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A771FBA29D8CFC800E96907 /* Collection+Access.swift */; };
 		3A771FBD29D8D81E00E96907 /* Binding+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A771FBC29D8D81E00E96907 /* Binding+Ext.swift */; };
 		3A771FC129DA96D600E96907 /* DetailLessonScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A771FC029DA96D600E96907 /* DetailLessonScreen.swift */; };
-		3A771FC529DAE1F400E96907 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A771FC429DAE1F400E96907 /* Download.swift */; };
+		3A771FC529DAE1F400E96907 /* DownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A771FC429DAE1F400E96907 /* DownloadService.swift */; };
 		3A771FC929DAE85D00E96907 /* DetailLessonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A771FC829DAE85D00E96907 /* DetailLessonViewModel.swift */; };
 		3A771FCD29DD765500E96907 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A771FCC29DD765500E96907 /* StorageService.swift */; };
 		3A771FD229DEFA1A00E96907 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A65C4FE29D57592003022DD /* Constants.swift */; };
@@ -57,13 +62,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A330D5E2B00FFD60097E753 /* DetailLessonViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLessonViewModelTests.swift; sourceTree = "<group>"; };
 		3A65C4B629D55D5D003022DD /* PhotographySchoolTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotographySchoolTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A65C4B929D55D5D003022DD /* PhotographySchoolTestAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotographySchoolTestAppApp.swift; sourceTree = "<group>"; };
 		3A65C4BB29D55D5D003022DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3A65C4BD29D55D5E003022DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A65C4C029D55D5E003022DD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3A65C4C629D55D5F003022DD /* PhotographySchoolTestAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotographySchoolTestAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A65C4CA29D55D5F003022DD /* PhotographySchoolTestAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotographySchoolTestAppTests.swift; sourceTree = "<group>"; };
 		3A65C4D029D55D5F003022DD /* PhotographySchoolTestAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotographySchoolTestAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A65C4D629D55D5F003022DD /* PhotographySchoolTestAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotographySchoolTestAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3A65C4E329D55DE1003022DD /* LessonsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsViewModel.swift; sourceTree = "<group>"; };
@@ -81,7 +86,7 @@
 		3A771FBA29D8CFC800E96907 /* Collection+Access.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Access.swift"; sourceTree = "<group>"; };
 		3A771FBC29D8D81E00E96907 /* Binding+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Ext.swift"; sourceTree = "<group>"; };
 		3A771FC029DA96D600E96907 /* DetailLessonScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLessonScreen.swift; sourceTree = "<group>"; };
-		3A771FC429DAE1F400E96907 /* Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
+		3A771FC429DAE1F400E96907 /* DownloadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadService.swift; sourceTree = "<group>"; };
 		3A771FC829DAE85D00E96907 /* DetailLessonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLessonViewModel.swift; sourceTree = "<group>"; };
 		3A771FCC29DD765500E96907 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		3A771FD929DFF1CB00E96907 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
@@ -143,10 +148,10 @@
 				3A65C50C29D5BEAD003022DD /* Generated */,
 				3A65C4FD29D5757D003022DD /* Helpers */,
 				3A65C4F629D57169003022DD /* Screens */,
-				3A65C4F529D57159003022DD /* Models */,
-				3A65C4F429D57083003022DD /* Networking */,
-				3A65C4B929D55D5D003022DD /* PhotographySchoolTestAppApp.swift */,
 				3A65C4BB29D55D5D003022DD /* ContentView.swift */,
+				3A65C4F529D57159003022DD /* Models */,
+				3A65C4F429D57083003022DD /* Services */,
+				3A65C4B929D55D5D003022DD /* PhotographySchoolTestAppApp.swift */,
 				3A65C4BD29D55D5E003022DD /* Assets.xcassets */,
 				3A65C50E29D5C245003022DD /* Colors.xcassets */,
 				3A65C4BF29D55D5E003022DD /* Preview Content */,
@@ -165,7 +170,7 @@
 		3A65C4C929D55D5F003022DD /* PhotographySchoolTestAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				3A65C4CA29D55D5F003022DD /* PhotographySchoolTestAppTests.swift */,
+				3A330D5E2B00FFD60097E753 /* DetailLessonViewModelTests.swift */,
 			);
 			path = PhotographySchoolTestAppTests;
 			sourceTree = "<group>";
@@ -188,13 +193,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		3A65C4F429D57083003022DD /* Networking */ = {
+		3A65C4F429D57083003022DD /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				3A771FC429DAE1F400E96907 /* Download.swift */,
+				3A771FCC29DD765500E96907 /* StorageService.swift */,
+				3A771FC429DAE1F400E96907 /* DownloadService.swift */,
 				3A65C4F929D57236003022DD /* LesonsManager.swift */,
 			);
-			path = Networking;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		3A65C4F529D57159003022DD /* Models */ = {
@@ -237,7 +243,6 @@
 			children = (
 				3A65C4EF29D56919003022DD /* Extensions */,
 				3A65C4FE29D57592003022DD /* Constants.swift */,
-				3A771FCC29DD765500E96907 /* StorageService.swift */,
 				3A771FD929DFF1CB00E96907 /* ErrorHandler.swift */,
 			);
 			path = Helpers;
@@ -479,7 +484,7 @@
 				3A771FBD29D8D81E00E96907 /* Binding+Ext.swift in Sources */,
 				3A771FBB29D8CFC800E96907 /* Collection+Access.swift in Sources */,
 				3A65C4FF29D57592003022DD /* Constants.swift in Sources */,
-				3A771FC529DAE1F400E96907 /* Download.swift in Sources */,
+				3A771FC529DAE1F400E96907 /* DownloadService.swift in Sources */,
 				3A771FB929D6B2D600E96907 /* PlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -488,8 +493,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A65C4CB29D55D5F003022DD /* PhotographySchoolTestAppTests.swift in Sources */,
+				3A330D612B0100CA0097E753 /* StorageService.swift in Sources */,
+				3A330D602B01007F0097E753 /* DetailLessonViewModel.swift in Sources */,
+				3A330D642B010B540097E753 /* Collection+Access.swift in Sources */,
+				3A330D632B010B330097E753 /* LessonModel.swift in Sources */,
+				3A330D5F2B00FFD70097E753 /* DetailLessonViewModelTests.swift in Sources */,
 				3A771FD329DEFA1B00E96907 /* Constants.swift in Sources */,
+				3A330D622B010B120097E753 /* DownloadService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

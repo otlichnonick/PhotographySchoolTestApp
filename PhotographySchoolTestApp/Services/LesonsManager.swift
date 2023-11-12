@@ -9,15 +9,15 @@ import Foundation
 
 struct LessonsManager {
     func getLessons(completionHandler: @escaping (Result<LessonsModel, ErrorHandler>) -> Void) {
-        guard let cacheUrl = StorageService.shared.getCacheUrl() else { return }
+        guard let cacheUrl = StorageService.shared.fetchCachedUrl(for: "lessons") else { return }
         
         if let cacheData = try? Data(contentsOf: cacheUrl),
            let lessonsModel = try? JSONDecoder().decode(LessonsModel.self, from: cacheData) {
             completionHandler(.success(lessonsModel))
             return
+        } else {
+            downloadLessonsAndSave(to: cacheUrl, with: completionHandler)
         }
-        
-        downloadLessonsAndSave(to: cacheUrl, with: completionHandler)
     }
     
     func downloadLessonsAndSave(to cacheUrl: URL, with completionHandler: @escaping (Result<LessonsModel, ErrorHandler>) -> Void) {

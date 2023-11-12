@@ -15,13 +15,8 @@ struct DetailLessonScreen: View {
         ZStack {
             DetailLessonView(lesson: $selectedLesson,
                              isEnable: $viewModel.downloadButtonIsEnable,
-                             onNextTapped: {
-                viewModel.showNextLesson(&selectedLesson, from: lessons)
-            },
-                             onDownloadTapped: {
-                viewModel.showProgressVeiw = true
-                viewModel.downloadButtonIsEnable = false
-            })
+                             onNextTapped: { viewModel.showNextLesson(&selectedLesson, from: lessons) },
+                             onDownloadTapped: { viewModel.askForDownload() })
             
             if viewModel.showProgressVeiw {
                 VStack {
@@ -31,7 +26,7 @@ struct DetailLessonScreen: View {
                     
                     HStack {
                         Button {
-                            viewModel.downloadVideo(from: selectedLesson.videoURL)
+                            viewModel.startDownload(with: selectedLesson.videoURL)
                         } label: {
                             Text(Constants.startButtonTitle)
                         }
